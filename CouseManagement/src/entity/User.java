@@ -3,12 +3,30 @@ package entity;
 public class User {
 
 	//attributi
+	private int id;
 	private String nome;
 	private String cognome;
-	private String mail;
+	private String email;
+	private String username;
 	private String password;
-	private char sesso;
+	private String sesso;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getSesso() {
+		return sesso;
+	}
+
+	public void setSesso(String sesso) {
+		this.sesso = sesso;
+	}
+
 	//costruttore
 	public User(){
 		
@@ -30,12 +48,20 @@ public class User {
 		this.cognome = cognome;
 	}
 
-	public String getMail() {
-		return mail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -48,7 +74,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [nome=" + nome + ", cognome=" + cognome + ", mail=" + mail + ", password=" + password + "]";
+		return "User [nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password=" + password + "]";
 	}
 	
 	
