@@ -12,7 +12,7 @@ import entity.StudenteEsame;
 
 public class StudenteEsameDao implements Dao {
 
-	private final String SCHEMA_TUPLA="id_es,id_studente,id_esame,voto ";
+	private final String SCHEMA_TUPLA="id_es,id_studente,id_esame,voto,data ";
 	ConnessioneSingleton is= ConnessioneSingleton.getIstanza();
 	Connection con=is.getCon();
 	private ResultSet res;
@@ -115,7 +115,7 @@ public class StudenteEsameDao implements Dao {
 		}
 
 		String sql="UPDATE esame_studente " 
-				+"SET id_es=?,id_studente=?,id_esame=?,voto=? "
+				+"SET id_es=?,id_studente=?,id_esame=?,voto=?,data=? "
 				+"WHERE id_es=? ";
 		
 
@@ -124,7 +124,8 @@ public class StudenteEsameDao implements Dao {
 			pst.setInt(2, nuovoStudenteEsame.getId_studente());
 			pst.setInt(3, nuovoStudenteEsame.getId_esame());
 			pst.setInt(4, nuovoStudenteEsame.getVoto());
-	       pst.setInt(5,nuovoStudenteEsame.getId_es()) ;//PK in WHERE
+			pst.setDate(5, nuovoStudenteEsame.getData());
+	       pst.setInt(6,nuovoStudenteEsame.getId_es()) ;//PK in WHERE
 
 			//eseguo lo statement così preparato:
 			pst.executeUpdate();
@@ -168,7 +169,7 @@ public class StudenteEsameDao implements Dao {
 	
 	@Override
 	public void add(Object tuplaNew) throws DaoException {
-		String sql = "INSERT INTO esame_studente (id_es,id_studente,id_esame,VOTO) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO esame_studente (id_es,id_studente,id_esame,voto,data) VALUES(?,?,?,?,?)";
 		
 		StudenteEsame nuovoStudenteEsame=null;
 		if (tuplaNew instanceof StudenteEsame) {
@@ -182,6 +183,7 @@ public class StudenteEsameDao implements Dao {
 				pst.setInt(2, nuovoStudenteEsame.getId_studente());
 				pst.setInt(3, nuovoStudenteEsame.getId_esame());
 				pst.setInt(4, nuovoStudenteEsame.getVoto());
+				pst.setDate(5, nuovoStudenteEsame.getData());
 	           pst.executeUpdate();
 					
 				
