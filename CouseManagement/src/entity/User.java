@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Date;
+
 public class User {
 
 	//attributi
@@ -9,7 +11,50 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
+	private int tipo_utente;
 	private String sesso;
+	private Date datanas;
+	private String città;
+	private String codFiscale;//utile nel caso di rilascio di un esame boh
+	private int numTel;
+	private String titoloStudi;
+	
+	
+	//costruttore
+		public User(){
+			
+		}
+	
+	public Date getDatanas() {
+		return datanas;
+	}
+	public void setDatanas(Date datanas) {
+		this.datanas = datanas;
+	}
+	public String getCittà() {
+		return città;
+	}
+	public void setCittà(String città) {
+		this.città = città;
+	}
+	public String getCodFiscale() {
+		return codFiscale;
+	}
+	public void setCodFiscale(String codFiscale) {
+		this.codFiscale = codFiscale;
+	}
+	public int getNumTel() {
+		return numTel;
+	}
+	public void setNumTel(int numTel) {
+		this.numTel = numTel;
+	}
+	public String getTitoloStudi() {
+		return titoloStudi;
+	}
+	public void setTitoloStudi(String titoloStudi) {
+		this.titoloStudi = titoloStudi;
+	}
 	
 	public int getId() {
 		return id;
@@ -27,10 +72,7 @@ public class User {
 		this.sesso = sesso;
 	}
 
-	//costruttore
-	public User(){
-		
-	}
+	
 
 	public String getNome() {
 		return nome;
@@ -71,11 +113,22 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+	public int getTipo_utente() {
+		return tipo_utente;
+	}
+
+	public void setTipo_utente(int tipo_utente) {
+		this.tipo_utente = tipo_utente;
+	}
 
 	@Override
 	public String toString() {
-		return "User [nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password=" + password + "]";
+		return "User [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", username="
+				+ username + ", password=" + password + ", tipo_utente=" + tipo_utente + "]\n";
 	}
+
 	
 	
 	//metodi

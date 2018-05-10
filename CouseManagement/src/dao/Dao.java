@@ -2,13 +2,11 @@ package dao;
 
 import java.util.ArrayList;
 
-import entity.*;
-
 public interface Dao {
-	public ArrayList<Studente> getAll();
-	public Studente getById(int id);
-	public ArrayList<?> getBy(String s);
-	public void update(Object bean);
-	public void delete(Object bean);
-	public void add(Object bean);
+	public ArrayList<?> getAll() throws DaoException;
+	public Object getById(int id) throws DaoException;
+	public ArrayList<?> getBy(String s) throws DaoException;
+	public void update(Object bean) throws DaoException;
+	public void delete(Object bean) throws DaoException;
+	public void add(Object bean) throws DaoException;
 }
