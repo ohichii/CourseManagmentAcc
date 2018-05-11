@@ -2,13 +2,14 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ConnessioneSingleton {
 
 	private Connection con; // oggetto che voglio creare in 'singleton'
-
+	
 	private static ConnessioneSingleton istanza;
 
 	private ConnessioneSingleton() {
