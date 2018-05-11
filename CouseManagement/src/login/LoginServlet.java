@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDao;
-import entity.User;
+import entity.UserCM;
 
 /**
  * Servlet implementation class LoginServlet
@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 			//registrazione utente
 			
 			UserDao ud = new UserDao();
-			User u = ud.selectByUsername(username);
+			UserCM u = ud.selectByUsername(username);
 			
 			if (u!=null && u.getUsername().equals(username)) {
 				request.setAttribute("errorMsg3", "Username già presente!");
@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 		//verifica esistenza utente
 		
 		UserDao ud = new UserDao();
-		User u = ud.selectByUsername(username);	
+		UserCM u = ud.selectByUsername(username);	
 
 		if(u!=null && u.getUsername().equals(username)) {
 			if(u.getPassword().equals(password)) {

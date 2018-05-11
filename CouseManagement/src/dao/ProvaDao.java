@@ -6,7 +6,7 @@ import entity.Corso;
 import entity.Insegnante;
 import entity.Studente;
 import entity.StudenteCorso;
-import entity.User;
+import entity.UserCM;
 
 public class ProvaDao {
 

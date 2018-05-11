@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import entity.User;
+import entity.UserCM;
 
 public class UserDao {
 
@@ -25,8 +25,8 @@ public class UserDao {
 		ConnessioneSingleton.chiudiEannullaStatico();
 	}
 
-	public User getUtente(String username, String password) {
-		User user = new User();
+	public UserCM getUtente(String username, String password) {
+		UserCM user = new UserCM();
 		try {
 			PreparedStatement stm = con.prepareStatement(QUERY);
 			stm.setString(1, username);
@@ -43,8 +43,8 @@ public class UserDao {
 		}
 		return user;
 	}
-	public User selectByUsername(String username) {
-		User user = new User();
+	public UserCM selectByUsername(String username) {
+		UserCM user = new UserCM();
 		try {
 			PreparedStatement stm = con.prepareStatement(QUERY_1);
 			stm.setString(1, username);

@@ -1,5 +1,5 @@
 package entity;
 
-public class Insegnante extends User{
+public class Insegnante extends UserCM{
 
 }

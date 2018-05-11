@@ -2,7 +2,7 @@ package entity;
 
 
 
-public class Studente extends User {
+public class Studente extends UserCM {
 //attributi
 	
 	

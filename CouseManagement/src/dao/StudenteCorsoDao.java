@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import entity.Studente;
 import entity.StudenteCorso;
-import entity.User;
+import entity.UserCM;
 
 public class StudenteCorsoDao implements Dao {
 
