@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.UserDaoCM;
-import entity.UserCM;
+import dao.DaoException;
+import dao.StudenteDao;
+import entity.Studente;
 
 /**
  * Servlet implementation class LoginServletCM
@@ -28,17 +31,21 @@ public class LoginServletCM extends HttpServlet {
 
 		// verifica esistenza utente
 
-		UserDaoCM ud = new UserDaoCM();
-		UserCM u = ud.selectByUsername(username);
+		StudenteDao ud;
+		try {
+			ud = new StudenteDao();
+		
+		ArrayList<Studente> u = ud.getBy(username);
+		Studente var = u.get(0);
 
-		if (u != null && u.getUsername().equals(username)) {
-			if (u.getPassword().equals(password)) {
-				request.getSession().setAttribute("nome", u.getNome());
-				request.getSession().setAttribute("cognome", u.getCognome());
-				request.getSession().setAttribute("username", u.getUsername());
-				request.setAttribute("email", u.getEmail());
-				request.getSession().setAttribute("password", u.getPassword());
-				request.setAttribute("tipoUtente", u.getTipo_utente());
+		if (var != null && var.getUsername().equals(username)) {
+			if (var.getPassword().equals(password)) {
+				request.getSession().setAttribute("nome", var.getNome());
+				request.getSession().setAttribute("cognome", var.getCognome());
+				request.getSession().setAttribute("username", var.getUsername());
+				request.setAttribute("email", var.getEmail());
+				request.getSession().setAttribute("password", var.getPassword());
+				request.setAttribute("tipoUtente", var.getTipo_utente());
 
 				getServletContext().getRequestDispatcher("/pagPersCM.jsp").forward(request, response);
 
@@ -55,6 +62,9 @@ public class LoginServletCM extends HttpServlet {
 			request.setAttribute("erroreMsg2", "Utente inesistente! Registrati");
 			getServletContext().getRequestDispatcher("/registrazioneCM.jsp").forward(request, response);
 
+		}} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
